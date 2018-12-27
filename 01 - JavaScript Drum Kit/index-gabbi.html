@@ -58,16 +58,17 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-    //remove function in project
+    //will remove the yellow box and the transition class from the key
     function removeTransitions(e){
-        if(e.propertyName !== 'transform') return
-        e.target.classList.remove('playing')
+        if(e.propertyName !== 'transform') return  
+        e.target.classList.remove('playing')   
     }
+    //this function will play the audio when the key is pressed
     function sound(e) {
         const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
         const box = document.querySelector(`div[data-key="${e.keyCode}"]`)
         if (!audio) return
-        console.log(box)
+        //console.log(box)
         audio.currentTime=0   //allows the key to be played multiple times in a row
         audio.play()    //plays the audio
         box.classList.add('playing')    //adds the class that adds the yellow boxes
