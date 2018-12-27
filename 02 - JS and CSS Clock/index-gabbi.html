@@ -62,13 +62,35 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: all 0.05s;
+      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
 
   </style>
 
   <script>
+    //creates variables that represent the different hands of the clock
+    const hourHand = document.querySelector('.second-hand')
+    const minuteHand = document.querySelector('.minute-hand')
+    const secondsHand = document.querySelector('.second-hand')
 
+    function setClock ()
+    {
+        const time = new Date()
+
+        const seconds = time.getSeconds()
+        const secondsAngle = ((seconds / 60) * 360) + 90
+        secondsHand.style.transform = `rotate(${secondsAngle}deg)`
+        
+        
+        //6 degrees is one second on a clock
+
+    }
+    setClock()
 
   </script>
 </body>
 </html>
+
