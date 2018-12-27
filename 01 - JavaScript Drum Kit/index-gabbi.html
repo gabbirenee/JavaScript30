@@ -72,7 +72,9 @@
         audio.play()    //plays the audio
         box.classList.add('playing')    //adds the class that adds the yellow boxes
     }
-
+    const keyArray = Array.from(document.querySelectorAll('.key'))  //makes an array of all the keys that will make a sound if pressed
+    keyArray.forEach((key => key.addEventListener('transitionend', removeTransitions))) //waits until the key transitions and then uses the removeTransitions funciton
+    
     window.addEventListener('keydown',sound)
   
 </script>
