@@ -60,10 +60,12 @@
 <script>
   window.addEventListener('keydown',function(e){
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const box = document.querySelector(`div[data-key="${e.keyCode}"]`);
     if (!audio) return;
-    console.log(e.keyCode);
+    console.log(box);
     audio.currentTime=0;    //allows the key to be played multiple times in a row
     audio.play();
+    box.classList.add('playing');
   });
   
 </script>
