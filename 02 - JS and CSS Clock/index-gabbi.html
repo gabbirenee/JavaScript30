@@ -72,20 +72,28 @@
 
   <script>
     //creates variables that represent the different hands of the clock
-    const hourHand = document.querySelector('.second-hand')
-    const minuteHand = document.querySelector('.minute-hand')
+    const hourHand = document.querySelector('.hour-hand')
+    const minuteHand = document.querySelector('.min-hand')
     const secondsHand = document.querySelector('.second-hand')
 
     function setClock ()
     {
-        const time = new Date()
+        let time = new Date()
 
-        const seconds = time.getSeconds()
-        const secondsAngle = ((seconds / 60) * 360) + 90
+        //sets the seconds hand
+        let seconds = time.getSeconds()
+        let secondsAngle = ((seconds/ 60)*360)+ 90
         secondsHand.style.transform = `rotate(${secondsAngle}deg)`
+
+        //sets the minute hand
+        let minutes = time.getMinutes()
+        let minutesAngle = ((minutes/ 60)*360)+((seconds/ 60)*6)+ 90
+        minuteHand.style.transform = `rotate(${minutesAngle}deg)`
         
-        
-        //6 degrees is one second on a clock
+        //sets the hour hand
+        let hours = time.getHours()
+        let hoursAngle = ((hours/ 12)*360)+ ((minutes/ 60)*30)+ 90
+        hourHand.style.transform = `rotate(${hoursAngle}deg)`
 
     }
     setClock()
