@@ -17,6 +17,15 @@
 <script>
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
+//fetching the data for the array
+const cities = []
+////Returns a "promise"
+fetch(endpoint)   //built into the browsers
+  .then(info => info.json())  //returns a JSON promise
+  .then(rawData => cities.push(...rawData))
+
+console.log(cities)
+
 </script>
 </body>
 </html>
