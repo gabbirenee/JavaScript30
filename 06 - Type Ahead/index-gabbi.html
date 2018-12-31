@@ -24,6 +24,7 @@ fetch(endpoint)   //built into the browsers
   .then(info => info.json())  //returns a JSON promise
   .then(rawData => cities.push(...rawData))
 
+//this function will return the search matches
 function findMatch (wordToMatch, cities) {
   return cities.filter(place => {
     const regex = new RegExp(wordToMatch, 'gi')
@@ -31,6 +32,17 @@ function findMatch (wordToMatch, cities) {
   })
 }
 
+//this function will display the search matches on the page
+function displayMatches () {
+  const matchArray = findMatch(this.value, cities)
+  console.log(matchArray)
+}
+
+const searchInput = document.querySelector('.search')
+const suggestions = document.querySelector('.suggestions')
+
+searchInput.addEventListener('change', displayMatches)
+searchInput.addEventListener('keyup', displayMatches)
 </script>
 </body>
 </html>
