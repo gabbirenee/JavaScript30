@@ -13,7 +13,7 @@
 
   canvas.width = window.innerWidth
   canvas.height = window.innerHeight
-  context.strokeStyle = '#ffff'
+  context.strokeStyle = '#000000'
   context.lineJoine = 'round'
   context.lineCap = 'round'
 
@@ -22,10 +22,24 @@
   let lastY =0
 
   function draw(e) {
+    if(!isDrawing)
+      return
     console.log(e);
+    context.beginPath()
+    context.moveTo(lastX, lastY)
+    context.lineTo(e.offsetX, e.offsetY)
+    context.stroke()
+
+    lastX = e.offsetXlastY = e.offsetY
+    // can also be written: [lastX, lastY] = [e.offsetX, e.offsetY]
+    
   }
 
   canvas.addEventListener('mousemove', draw)
+  canvas.addEventListener('mousedown', () => isDrawing = true)
+  canvas.addEventListener('mouseup', () => isDrawing = false)
+  canvas.addEventListener('mouseout', () => isDrawing = false)  //if the mouse leaves the window, it will stop drawing
+
 
 </script>
 
