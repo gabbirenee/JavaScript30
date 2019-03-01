@@ -105,13 +105,13 @@
     let startChecking = false 
     if(e.shiftKey && this.checked)  // don't want this to fire if they are unchecking the boxes
     {
+      let toBeChecked = false
       chkArray.forEach(chkBox => {
-        if(this.checked && startChecking) 
-          startChecking = false
-        else if(this.checked && startChecking === false)
-          startChecking = true 
-        else if (this.checked === false && startChecking)
-          this.checked = true
+        //this will switch toBeChecked if the box is checked or if 
+        if (chkBox === this || chkBox === lastChecked) 
+          toBeChecked = !toBeChecked
+        if (toBeChecked)
+          chkBox.checked = true
       })
     }
     lastChecked = this
