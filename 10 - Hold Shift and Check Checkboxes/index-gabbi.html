@@ -96,6 +96,32 @@
   </div>
 
 <script>
+    // push all the checkboxes as an array of objects with an id and the info in the paragraph
+    // When shift is pressed remember the first clicked amd the last clicked then check all the boxes in between
+    // Must work top to bottom and bottom to top
+  let lastChecked;
+  function handleChkBoxes(e) {
+    //check if shift is pressed
+    let startChecking = false 
+    if(e.shiftKey && this.checked)  // don't want this to fire if they are unchecking the boxes
+    {
+      chkArray.forEach(chkBox => {
+        if(this.checked && startChecking) 
+          startChecking = false
+        else if(this.checked && startChecking === false)
+          startChecking = true 
+        else if (this.checked === false && startChecking)
+          this.checked = true
+      })
+    }
+    lastChecked = this
+  }
+
+    const chkArray = document.querySelectorAll('.inbox input[type="checkbox"]')
+    console.log(chkArray)
+    chkArray.forEach(chkBox => chkBox.addEventListener('click', handleChkBoxes))
+    let toCheckArray = []
+
 </script>
 </body>
 </html>
