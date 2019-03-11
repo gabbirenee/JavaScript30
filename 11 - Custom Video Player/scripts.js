@@ -17,6 +17,15 @@ function togglePlay () {
         video.pause()
 }
 
+function changePlayButton() {
+    if(video.paused)
+        playBtn.textContent = "►"
+    else
+        playBtn.textContent = "❚ ❚"
+    
+}
 /* Event listeners */
 video.addEventListener('click', togglePlay)
+video.addEventListener('play', changePlayButton)
+video.addEventListener('pause', changePlayButton)
 playBtn.addEventListener('click', togglePlay)
