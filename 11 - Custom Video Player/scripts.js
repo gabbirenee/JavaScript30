@@ -49,3 +49,4 @@ playBtn.addEventListener('click', togglePlay)
 skipBtns.forEach(button => button.addEventListener('click', skip))
 
 sliders.forEach(slider => slider.addEventListener('change', handleSliderChange))
+
