@@ -24,8 +24,16 @@ function changePlayButton() {
         playBtn.textContent = "❚ ❚"
     
 }
+
+function skip () {
+    video.currentTime += parseFloat(this.dataset.skip)
+}
+
 /* Event listeners */
 video.addEventListener('click', togglePlay)
 video.addEventListener('play', changePlayButton)
 video.addEventListener('pause', changePlayButton)
+
 playBtn.addEventListener('click', togglePlay)
+
+skipBtns.forEach(button => button.addEventListener('click', skip))
