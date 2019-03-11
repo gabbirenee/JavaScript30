@@ -3,9 +3,20 @@ const videoPlayer = document.querySelector(".player")
 //console.log(videoPlayer)
 const video = videoPlayer.querySelector(".viewer")
 //console.log(video)
-const progressBar = player.querySelector('.progress');
-const actualProgress = player.querySelector('.progress__filled');
-const playBtn = player.querySelector('.toggle');
-const skipBtns = player.querySelectorAll('[data-skip]');
-const sliders = player.querySelectorAll('.player__slider');
+const progressBar = videoPlayer.querySelector('.progress');
+const actualProgress = videoPlayer.querySelector('.progress__filled');
+const playBtn = videoPlayer.querySelector('.toggle');
+const skipBtns = videoPlayer.querySelectorAll('[data-skip]');
+const sliders = videoPlayer.querySelectorAll('.player__slider');
 
+/* Make the elements do things */
+function togglePlay () {
+    if (video.paused)
+        video.play()
+    else
+        video.pause()
+}
+
+/* Event listeners */
+video.addEventListener('click', togglePlay)
+playBtn.addEventListener('click', togglePlay)
