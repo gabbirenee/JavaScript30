@@ -34,12 +34,18 @@ function handleTimeUpdate() {
     progressBar.style.flexBasis = `${progress}%`;
 }
 
+function handleSliderChange () {
+    video[this.name] = this.value 
+}
+
 /* Event listeners */
 video.addEventListener('click', togglePlay)
 video.addEventListener('play', changePlayButton)
 video.addEventListener('pause', changePlayButton)
-video.addEventListener('timeupdate', handleTimeupdate)
+video.addEventListener('timeupdate', handleTimeUpdate)
 
 playBtn.addEventListener('click', togglePlay)
 
 skipBtns.forEach(button => button.addEventListener('click', skip))
+
+sliders.forEach(slider => slider.addEventListener('change', handleSliderChange))
