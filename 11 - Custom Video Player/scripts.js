@@ -29,10 +29,16 @@ function skip () {
     video.currentTime += parseFloat(this.dataset.skip)
 }
 
+function handleTimeUpdate() {
+    const progress = (video.currentTime / video.duration) * 100 //this will give the percentage of the video that has been watched
+    progressBar.style.flexBasis = `${progress}%`;
+}
+
 /* Event listeners */
 video.addEventListener('click', togglePlay)
 video.addEventListener('play', changePlayButton)
 video.addEventListener('pause', changePlayButton)
+video.addEventListener('timeupdate', handleTimeupdate)
 
 playBtn.addEventListener('click', togglePlay)
 
