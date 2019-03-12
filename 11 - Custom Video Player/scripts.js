@@ -31,13 +31,18 @@ function skip () {
 
 function handleTimeUpdate() {
     const progress = (video.currentTime / video.duration) * 100 //this will give the percentage of the video that has been watched
-    progressBar.style.flexBasis = `${progress}%`;
+    actualProgress.style.flexBasis = `${progress}%`
 }
 
 function handleSliderChange () {
     video[this.name] = this.value 
 }
 
+function scrub(e) {
+    const scrubbingTime = (e.offsetX / progressBar.offsetWidth) * video.duration
+    console.log(scrubbingTime)
+    video.currentTime = scrubbingTime
+}
 /* Event listeners */
 video.addEventListener('click', togglePlay)
 video.addEventListener('play', changePlayButton)
@@ -50,3 +55,4 @@ skipBtns.forEach(button => button.addEventListener('click', skip))
 
 sliders.forEach(slider => slider.addEventListener('change', handleSliderChange))
 
+progressBar.addEventListener('click', scrub)
