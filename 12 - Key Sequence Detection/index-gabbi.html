@@ -7,7 +7,21 @@
   </head>
   <body>
     <script>
+      /* For key sequencing detection:
+        Store keys in an array and compare them to a string */ 
+      const pressed = []
+      const secretCode = "wesbos"
 
+      window.addEventListener('keyup', (e) => {
+        // console.log(e.key)
+        pressed.push(e.key)
+        pressed.splice(-secretCode -1, pressed.length - secretCode.length)
+        if(pressed.join('').includes(secretCode) )
+        {
+          console.log("great work")
+          cornify_add()
+        }
+      })
     </script>
   </body>
 </html>
