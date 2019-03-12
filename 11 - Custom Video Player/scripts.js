@@ -55,4 +55,8 @@ skipBtns.forEach(button => button.addEventListener('click', skip))
 
 sliders.forEach(slider => slider.addEventListener('change', handleSliderChange))
 
+let mouseDown = false
 progressBar.addEventListener('click', scrub)
+progressBar.addEventListener('mousemove', (e) => mouseDown && scrub(e)) //if the mouseDown variable is true it will run the scrub function; if the variable is false it will not run the function
+progressBar.addEventListener('mousedown', () => mouseDown = true )
+progressBar.addEventListener('mouseup', () => mouseDown = false)
