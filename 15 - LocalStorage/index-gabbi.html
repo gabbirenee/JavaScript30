@@ -26,9 +26,23 @@
         </div>
 
         <script>
-            const addItems = document.querySelector('.add-items');
-            const itemsList = document.querySelector('.plates');
-            const items = [];
+            const addItems = document.querySelector('.add-items')  // this is the form element
+            const itemsList = document.querySelector('.plates')    // this is the list that the form input will be added to
+            const items = []   // an array of objects that includes the name and the status (clicked or not)
+
+            function addItem (e) {
+                e.preventDefault()  // the default of a form submit is to send the data and refresh the page -- that is not what we want so we use the preventDefault method to stop this
+                const itemName = (this.querySelector('[name=item]')).value 
+                const item = { 
+                    name: itemName,     // if the property name and the variable name were the same you could write it 2 ways (1) name: name, (2) name, --> the second way is the ES6 way 
+                    checked: false 
+                }
+                console.log(item)
+                this.reset()    // resets the form
+            }
+
+            addItems.addEventListener('submit', addItem)   // listening to the submit event covers all the bases (button click, enter, etc.)
+
 
         </script>
 
