@@ -39,7 +39,19 @@
                 }
                 console.log(item)
                 items.push(item)
+                populateList(items, itemsList)
                 this.reset()    // resets the form
+            } 
+
+            function populateList(plates = [], platesList) {   // will be used to actually change the html
+                platesList.innerHTML = plates.map((plate, i) => {
+                    return ` 
+                        <li>
+                            <input type="checkbox" data-index=${i} id="item${i}" ${plate.done ? 'checked' : ''} />
+                            <label for="item${i}">${plate.name}</label>
+                        </li>
+                    `
+                }).join('')
             }
 
             addItems.addEventListener('submit', addItem)   // listening to the submit event covers all the bases (button click, enter, etc.)
