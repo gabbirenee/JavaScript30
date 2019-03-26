@@ -44,7 +44,8 @@
                 //these lines can also be written: const {offsetWidth: width, offsetHeight: height} = hero
                 let x = e.offsetX
                 let y = e.offsetY   // let {offsetX: x, offsetY: y} = e
-
+                
+                //console.log(this, e.target)
                 if (this !== e.target)  // this needs to be done because the e.target will change if you are hovering over the h1; this will always be hero, but e.target will change
                 {
                     x = x + e.target.offsetLeft
@@ -60,6 +61,9 @@
             }
 
             hero.addEventListener('mousemove', shadow)
+
+            //Notes about this lesson:
+                // If you are dealing with javascript events, you can use offsetX and offsetY to get your cursor position, however if you have nested elements within that, it may require some math to get those positions
         </script>
     </body>
 </html>
