@@ -33,8 +33,30 @@
                 font-size: 100px;
             }
         </style>
-
         <script>
+            const hero = document.querySelector('.hero')
+            const header = hero.querySelector('h1')
+            const walk =  100   //this will be 100px 
+
+            function shadow(e){
+                const width = hero.offsetWidth 
+                const height = hero.offsetHeight
+                //these lines can also be written: const {offsetWidth: width, offsetHeight: height} = hero
+                let x = e.offsetX
+                let y = e.offsetY   // let {offsetX: x, offsetY: y} = e
+
+                if (this !== e.target)  // this needs to be done because the e.target will change if you are hovering over the h1; this will always be hero, but e.target will change
+                {
+                    x = x + e.target.offsetLeft
+                    y = y + e.target.offsetRight
+                }
+                const xWalk = Math.round((x / width * walk) - (walk / 2))   //this offsets the values 
+                const yWalk = Math.round((y / height * walk) - (walk / 2))
+
+                header.style.textShadow = `${xWalk}px ${yWalk}px 0 red`
+            }
+
+            hero.addEventListener('mousemove', shadow)
         </script>
     </body>
 </html>
