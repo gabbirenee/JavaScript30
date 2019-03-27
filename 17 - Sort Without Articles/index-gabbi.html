@@ -44,8 +44,8 @@
         <script>
             const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog']
 
-            function removeArticles () {
-                return bandName.replace(/^(a |the |an /i, '').trim()    //this is a regular expression (regex)
+            function removeArticles (band) {
+                return band.replace(/^(a |the |an )/i, '').trim()    //this is a regular expression (regex)
             }
 
             const sortedList = bands.sort(function (a, b){
@@ -55,7 +55,9 @@
                     return -1
             })
 
-
+            document.querySelector('#bands').innerHTML = 
+                sortedList.map(band => `<li>${band}</li>`)
+                .join('')
 
         </script>
     </body>
