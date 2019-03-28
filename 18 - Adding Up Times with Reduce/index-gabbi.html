@@ -182,7 +182,23 @@
             </li>
         </ul>
     <script>
-        
+        const timeElements = Array.from(document.querySelectorAll('[data-time]'))
+        console.log(timeElements)
+        const seconds = timeElements.map(time => time.dataset.time)
+            .map(timeCode => {
+                const [min, second] = timeCode.split(":").map(parseFloat)   // this will take all the numbers in the nodeList and split it up into minutes and seconds. ParseFloat takes the strings of the split time code and converts them into integers that we can do math with
+                return (min * 60) + second
+            })
+            .reduce((total, vidSeconds) => total + vidSeconds)
+            console.log(seconds)    //map takes in an array and outputs an array while reduce takes in an array and outputs whatever you want (int, string, etc. )
+            
+            let secondsLeft = seconds
+            const hours = Math.floor(secondsLeft / 3600)    //will take the lower limit (get rid of the remainder)
+            secondsLeft = secondsLeft % 3600
+            const minutes = Math.floor(secondsLeft / 60)
+            secondsLeft = secondsLeft % 60
+            console.log(hours, minutes, secondsLeft)
+
     </script>
     </body>
 </html>
